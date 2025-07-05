@@ -15,9 +15,9 @@ function Navbar({query,setQuery}){
             /></button></Link>
             
             <div className="flex">
-            <h1 className="ml-2 mt-7 text-1xl font-bold">HOME - </h1>
-            <p className="mt-10 -ml-15 text-amber-600 font-extrabold">________</p>
-            <p className="mt-7 ml-2 text-gray-500"> Cantt Road, Mohyal Nagar, Jaland...</p>
+            <h1 className="ml-2 mt-7 text-1xl font-bold hover:text-amber-600 hover:cursor-pointer" >Other - </h1>
+            <p className="mt-10 -ml-15 hover:text-amber-600 font-extrabold hover:cursor-pointer">________</p>
+            <p className="mt-7 ml-2 text-gray-500"> Bengaluru, Karnataka, India</p>
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT08USDXzXIVJQl7em2LsbtdK1vdH_EiSvAZu2yJNzBrhdFfFCK8o_z8lJ3qqWhrSNJy5U&usqp=CAU"
             
             className="w-4 h-4 rotate-180 bg-gray-300 rounded-2xl mt-8 ml-3"
