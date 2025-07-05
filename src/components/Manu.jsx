@@ -4,7 +4,7 @@ import { useCart } from "../context/CartContext";
 function Manu({restId,restInfo,cards,restDetails}){
 
    
-   const {addToCart}=useCart();
+   const {addToCart,CartItems,removeFromManu}=useCart();
     const [required ,setRequired]=useState("");
     // const [display ,setDisplay]=useState();
     const Info=cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
@@ -20,7 +20,7 @@ function Manu({restId,restInfo,cards,restDetails}){
             />
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRw7ioc38Ib77lcabaT4NGXYA-Wj2tRuhUfOzk6K1_o2F6QFq2x"
             
-            className="w-16 ml-215 -mt-14  rounded-full bg-gray-100"
+            className="w-16 ml-215 -mt-14 rounded-full bg-gray-100"
             />
             </div>
 
@@ -48,11 +48,13 @@ function Manu({restId,restInfo,cards,restDetails}){
 
 
                        const pop=dtail?.itemAttribute?.vegClassifier;
+                       const Cartaction=CartItems.some((CartObj) => CartObj.item.id === dtail.id);
+                              const isInCart = !!Cartaction;
                       
 
 
                        return(
-                       <div key={`${id}-${idx}`} className="shadow m-5 rounded-2xl  h-62 p-3 w-230">
+                       <div key={dtail.id} className="shadow m-5 rounded-2xl  h-62 p-3 w-230">
 
                         {
                           pop ==="VEG" && (
@@ -76,14 +78,34 @@ function Manu({restId,restInfo,cards,restDetails}){
                             className="w-40 h-35 rounded-2xl  mt-2 ml-180"
                             />
                         }
-                        <div className="-mt-8">
-                        <button 
-                        onClick={()=>addToCart(dtail,restDetails?.cloudinaryImageId,restDetails?.areaName ,restDetails?.name)}
-                        className="ml-185 - w-30 h-10 bg-neutral-100 rounded-2xl shadow-2xl hover:cursor-pointer overflow-hidden hover:bg-gray-200 text-emerald-700 font-bold">Add</button>
-                        <p className="ml-190 text-gray-600 font-[10px]">Customiable</p></div>
+                        {
+                          isInCart?(
+                              <div  className="">
+                              <div className=" flex  w-28  h-10  ml-185 gap-5 font-extrabold rounded-2xl shadow-2xl hover:cursor-pointer overflow-hidden hover:bg-gray-300 ">
+                              <button onClick={()=>removeFromManu(dtail.id)}
+                                className="hover:text-emerald-800 ml-9 "
+                                
+                                >-</button>
+                              <button className="hover:text-emerald-800  ">+</button>
+                              </div>
+
+                            </div>
+                            
+
+                          ):(
+                          
+                            <div>
+                            <button onClick={()=>addToCart(dtail,restDetails?.cloudinaryImageId,restDetails?.areaName ,restDetails?.name)}
+                               className="ml-185 -mt-6 w-30 h-10 bg-neutral-100 rounded-2xl shadow-2xl hover:cursor-pointer overflow-hidden hover:bg-gray-300 text-emerald-700 font-bold"
+
+                              >Add</button>
+                            <p className="ml-190 text-gray-600 font-[10px]">Customiable</p>
+                            </div>
+                          )
+                        }
                         
                         {
-                            <p className="-mt-40 ml-6 font-bold text-gray-700">{name}</p>
+                            <p className="-mt-42 ml-6 font-bold text-gray-700">{name}</p>
                         }
                         <div className="flex">
                         {

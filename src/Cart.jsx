@@ -61,14 +61,15 @@ function Cart(){
               const {item, restaurantImageId}= CartItem;
          
               return(
-                <li className="flex  mt-8"key={item.id}>
-                  <span>{
+                <li className="flex  mt-8 "key={item.id}>
+                  <span className="">{
 
                     item.itemAttribute?.vegClassifier==="VEG" &&(
-                      <img src="data:image/png;base64,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"
+                      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAkFBMVEX///8AgAAAfAAAeAAAegAAdgC217aWwpYihiIAdAB/sH9yq3Li8eIAfgAAewD9//0AgwD1+vXo8+jQ5dAAhwC82ryFuoVSn1JtrW3E3sTu9u6u0a5lqGUaiRpGmUYahBo5jzmuy66yzrKbypumzKY3lTc/lz+dx53U6NQUhhQrjit7s3tZoFnA2sCSwpJKmko1AZXDAAADzUlEQVR4nO3caVPiQBSF4SbdgVHpsAuyOTqIbOL//3eTuFDMeLN2Eo7leb7PnXorIUlnUSkiIiIiIiIiIiIiIiIiIiIiIiIiIiLKpqVtnbz7+gtNo07210UKvbqEiRcp9K7r8vtChVe1/Wc3HgsrwMJSsbASLCwVCyvBwlKxsBIsLBULK8HCUrGwEiwU9Aejx4eHh8fmXTvnv/wGhb3meKh9rU1Ea98fLv9Ms/9z9MLOYOJpz/53e9D4h2Yv4wTswt5srT35Hqi+P/YzzYAubC2MFfvemMY+y84KXDhI7IsEjVX6GNjCzt5P6Yvop9TNiFrYX2d7tuF171ImgRYOuvIB5isbpOypmIUjm2EPPe2pt4mzIAtnfva+kD9JGoZYONK5AlO2ImDhIP/zU/McPw6vcLrN8Rs8JQ5i5+EVjrMeRc/Zbux5Ea7wOe+P8J33GjcQrbBfqC/kj2ImohXOg4KFdhGznAIr3OQ7E54zLXkkWOG4wHH001Y+2GAVboodZj42onxSxCqcFDlTfLK7jjQTqnC6dQgML97E0z5U4cjtfbdgLw2FKpy77KShrjQUqbC3cziSRvyNMBWpsO36UqaRlvtIhSvXQjsWpiIV3ha9YjvZClORCg+OP8NwhSGcEYEKOwvnwkB4MIVU2HUNFJf6SIXOP8OGEW4PIxUWXzmdCl++jmVhJWIK3b/CQN9LnQPhjzRD90LhwhSoUC3dz4fCjQykwhvHxZO8fEIqPDpfeT8JU5EKBy73oSLBUZiKVDh1vWzT0hNvpELnxYWRbrZBFTp+eSkugLEK227bUM+koVCF6tUtUXw2g1XYdNlNgxtxJlahclnme/Kbp2CFq+KnRG8ujwQrdNiI0j2aCFrhXdGNaOLeqUErLPqY23bFR2sKsLDfLbSfihdsb+AK1UuR/VRL19zv8ArVbf7EQLxeewdYqCZ5E711wov7iIVqni/RWyS9Cg1Z2Mm1FYNd4rvekIVK7bMnmqRdVMEWqlWQ8aRhxNcTzqAWRl9bZOizRlwTnoMtVNOJTt2Meim9m/Av3MJoMyZ+VGK1Td2ACrswvL5ZmrjLVGsWGT4JUuiFSm0mjS8f50V59hD3xuz/0AvD3+NqsvC1CbyPP75mjD88ZPwyL4JfGOq1m63r+Xi9exrPr1uzTdaPK998i0InLKwEC0vFwkqwsFQsrAQLS8XCSrCwVCysBAtLxcJK/IhCv12T/txeprDh18Ve6G+y16r+wuOVrlWj9sJNs2a1FxIREREREREREREREREREREREREREREREREREf1MfwFFP1BpC839CAAAAABJRU5ErkJggg=="
                       
                       alt="Oopsy! image not rendering"
-                      className="w-12 h-7"
+                      className="w-17 h-9"
+                     
                       />
                     )
                     }
@@ -76,22 +77,25 @@ function Cart(){
                       item.itemAttribute?.vegClassifier==="NONVEG" && (
                         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAe1BMVEX///+lKiqkJyejISGhGBieAADToaGgERHiv7+pOjqiHR315+fFiIjDf3+iGxvMlpagDAzbsbH47+/p0NCpMjLs1dWgFBTx4eHdt7eoNTWvTEy0U1PCeXmnLi768/POlZW7aGiuRESyUFDVpaW+b2/Xq6u2W1u4YWHIjY3kqCW3AAADP0lEQVR4nO3ca1PiMBSAYZNSi6hYuXphAdcb//8XrjhoEdI26SbhZHyf78n6TjM9gpk9OwMAAAAAAAAAAAAAAAAAAABg57zMYhrcxy+c6agu4hf2lBrEotVpCgdXkWweTvQM82j/2HVGYQAUekVhEBR6RWEQFHpFYRAUekVhEBR6RWEQFHpFYRAUekVhEF0LH+cdFqVUeJs/dFiVUOFI6fLOfVlChYuh0n+WzsvSKRznSqnhtfO6dAon+qNQlWPXdckUrnrbQKWfXBemUjjPPh+hUsW548pUCteZ2ikv3VYmUnhXfgWq7M1taRqFS62/C1Vx67Q2jcKPUVjRE6ehmEThNFf7elcui5MofNI/ClUxdVicQuHN7Geg21BMoPB7FO49RIehmEBhNQor5ch6ufzCfnkcqLK19Xr5hfrojH6eU+tPiuILr4emQKXvbYei9MKp6YxuWQ9F6YV/Da+Z3Tm1HIrCC58PR+Hey8byaynZhZcD42tm9xCfrfaQXWgahdXLpmc1FEUX9vOGwI9z+mKziejC41/XDs5p32ITyYVXveZApS8shqLgwmn9e/SLzVAUXPjY9JrZKduHotzC16I90OaTotjCUdtrZvcQX9s2Elu4HtgEKp21DUWphS2jsDJYtOwktXBidUa32oai0MJN2yjcO6ctP7/Mwql9oFKzTeNeMgvfLEZhJW+8wCCy8Lbug71Z9ti0mcTCkfnLp3pF01CUWPhiNworWjUMRYGFY9tRWBk2DEWBhReOZ3SrqL/AIK9w5TIpvjT8Bi6ucN705VO92apuQ3GFbqOwktddYJBWeOc2Ciu1FxiEFS7tPhWa1F1gEFa4MP8dxoaemIeirMJx1zO6VXOrT1bh4ZUEN7lxKIoqPLqS4MY8FCUVdhyFFeMFBkmF7x1HYWVmGIqCCjuPwkr2frytnMJl8Z9ndMtwgUFOYc2VBDeGCwxiCsd5b+hBfjQUxRS+rm682Bw+RDGFwVAYBIVeURgEhV5RGASFXlEYBIVeURgEhV5RGASFXlEYBIVenazwMpLR4kSFKo8lO9H/Oh/TKQrzIqZSRS+c9yOLXggAAAAAAAAAAAAAAAAAAAAAAAAAwO/0Dw3jSYf0UtTrAAAAAElFTkSuQmCC"
                         alt="Oopsy! image not rendering"
-                        className="w-13 h-7 -ml-1"/>
+                        className="w-13 h-7 "
+                        />
                       )
                     }
                     
                     </span>
-                <span className="text-left ml-2">{item.name}</span>
-                <span>{
+                <span className="text-left ">{item?.name}</span>
+                <span className="flex justify-between align-middle ml-28">{
+                  <div className=" ">
                   
-                  <section className=" flex justify-center align-middle  border p-3 gap-4 ">
-                    <button type="button" className="font-bold hover:scale-95 hover:text-green-800 hover:cursor-pointer" onClick={()=>remove(item.id)}>-</button>
+                  <div className="flex   border p-3 gap-4 ">
+                    <button type="button" className="font-bold hover:scale-95 hover:text-green-800 hover:cursor-pointer" onClick={()=>remove(item?.id)}>-</button>
                     <button className="font-bold hover:scale-95 hover:text-green-800 hover:cursor-pointer ">+</button>
-                  </section>
+                  </div>
+                  </div>
          
                   
                   }</span>
-                <span className="text-right ml-62 ">₹{(item.defaultPrice || item.price ||0)/100}</span>
+                <span className="text-right ml-28">₹{(item?.defaultPrice || item.price ||0)/100}</span>
                 </li>
 
               )

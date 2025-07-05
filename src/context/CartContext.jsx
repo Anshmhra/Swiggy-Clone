@@ -22,9 +22,13 @@ export function CartProvider({children}){
 
   
 }
+function removeFromManu(itemId){
+  setCartItems((prev)=>prev.filter((CartObj)=> CartObj.item.id !== itemId));
+
+}
 
     return(
-        <CartContext.Provider value={{CartItems,addToCart,remove}}>{children}</CartContext.Provider>
+        <CartContext.Provider value={{CartItems,addToCart,remove ,removeFromManu}}>{children}</CartContext.Provider>
     )
 }
 
