@@ -36,22 +36,24 @@ function Cart(){
       ) : (
         <div className="shadow-2xl w-120 ml-200 -mt-12 rounded-2xl p-2">
          {
-          CartItems.length >0 && CartItems.map((item,index)=>(
-            item.restaurantImageId && (
-              <div>
-               <img src={`https://media-assets.swiggy.com/swiggy/image/upload/${item?.restaurantImageId}`}
+          CartItems.length > 0 && CartItems[0]?.restaurantImageId && (
+            <div>
+               <img src={`https://media-assets.swiggy.com/swiggy/image/upload/${CartItems[0]?.restaurantImageId}`}
             className="w-15 ml-7 mt-4 rounded-2xl "
             />
-             <p className="ml-26 -mt-15  font-semibold text-[18px]">{item.locality}</p> 
-          <h2 className="ml-26 font-semibold text-gray-600">{item.restaurantName}</h2>
+             <p className="ml-26 -mt-15  font-semibold text-[18px]">{CartItems[0]?.locality}</p> 
+          <h2 className="ml-26 font-semibold text-gray-600">{CartItems[0]?.restaurantName}</h2>
 
 
             </div>
-            
-            )
 
-          ))
+          )
+           
+          
          }
+
+            
+         
         
          
         <ul className="">
