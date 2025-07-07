@@ -76,7 +76,7 @@ function Cart(){
                       item.itemAttribute?.vegClassifier==="NONVEG" && (
                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Non_veg_symbol.svg/1024px-Non_veg_symbol.svg.png"
                           alt="Oopsy! image not rendering"
-                        className="w-13 h-7 "
+                        className="w-8 h-7 "
                         />
                       )
                     }
