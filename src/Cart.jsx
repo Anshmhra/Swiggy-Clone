@@ -62,7 +62,7 @@ function Cart(){
          
               return(
                 <li className="flex  mt-8 "key={item.id}>
-                  <span className="object-contain">{
+                  <span className="">{
 
                     item.itemAttribute?.vegClassifier==="VEG" &&(
                       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Veg_symbol.svg/1024px-Veg_symbol.svg.png"
