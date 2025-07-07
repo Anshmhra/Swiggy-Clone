@@ -62,21 +62,20 @@ function Cart(){
          
               return(
                 <li className="flex  mt-8 "key={item.id}>
-                  <span className="">{
+                  <span className="object-contain">{
 
                     item.itemAttribute?.vegClassifier==="VEG" &&(
-                      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAkFBMVEX///8AgAAAfAAAeAAAegAAdgC217aWwpYihiIAdAB/sH9yq3Li8eIAfgAAewD9//0AgwD1+vXo8+jQ5dAAhwC82ryFuoVSn1JtrW3E3sTu9u6u0a5lqGUaiRpGmUYahBo5jzmuy66yzrKbypumzKY3lTc/lz+dx53U6NQUhhQrjit7s3tZoFnA2sCSwpJKmko1AZXDAAADzUlEQVR4nO3caVPiQBSF4SbdgVHpsAuyOTqIbOL//3eTuFDMeLN2Eo7leb7PnXorIUlnUSkiIiIiIiIiIiIiIiIiIiIiIiIiIiLKpqVtnbz7+gtNo07210UKvbqEiRcp9K7r8vtChVe1/Wc3HgsrwMJSsbASLCwVCyvBwlKxsBIsLBULK8HCUrGwEiwU9Aejx4eHh8fmXTvnv/wGhb3meKh9rU1Ea98fLv9Ms/9z9MLOYOJpz/53e9D4h2Yv4wTswt5srT35Hqi+P/YzzYAubC2MFfvemMY+y84KXDhI7IsEjVX6GNjCzt5P6Yvop9TNiFrYX2d7tuF171ImgRYOuvIB5isbpOypmIUjm2EPPe2pt4mzIAtnfva+kD9JGoZYONK5AlO2ImDhIP/zU/McPw6vcLrN8Rs8JQ5i5+EVjrMeRc/Zbux5Ea7wOe+P8J33GjcQrbBfqC/kj2ImohXOg4KFdhGznAIr3OQ7E54zLXkkWOG4wHH001Y+2GAVboodZj42onxSxCqcFDlTfLK7jjQTqnC6dQgML97E0z5U4cjtfbdgLw2FKpy77KShrjQUqbC3cziSRvyNMBWpsO36UqaRlvtIhSvXQjsWpiIV3ha9YjvZClORCg+OP8NwhSGcEYEKOwvnwkB4MIVU2HUNFJf6SIXOP8OGEW4PIxUWXzmdCl++jmVhJWIK3b/CQN9LnQPhjzRD90LhwhSoUC3dz4fCjQykwhvHxZO8fEIqPDpfeT8JU5EKBy73oSLBUZiKVDh1vWzT0hNvpELnxYWRbrZBFTp+eSkugLEK227bUM+koVCF6tUtUXw2g1XYdNlNgxtxJlahclnme/Kbp2CFq+KnRG8ujwQrdNiI0j2aCFrhXdGNaOLeqUErLPqY23bFR2sKsLDfLbSfihdsb+AK1UuR/VRL19zv8ArVbf7EQLxeewdYqCZ5E711wov7iIVqni/RWyS9Cg1Z2Mm1FYNd4rvekIVK7bMnmqRdVMEWqlWQ8aRhxNcTzqAWRl9bZOizRlwTnoMtVNOJTt2Meim9m/Av3MJoMyZ+VGK1Td2ACrswvL5ZmrjLVGsWGT4JUuiFSm0mjS8f50V59hD3xuz/0AvD3+NqsvC1CbyPP75mjD88ZPwyL4JfGOq1m63r+Xi9exrPr1uzTdaPK998i0InLKwEC0vFwkqwsFQsrAQLS8XCSrCwVCysBAtLxcJK/IhCv12T/txeprDh18Ve6G+y16r+wuOVrlWj9sJNs2a1FxIREREREREREREREREREREREREREREREREREf1MfwFFP1BpC839CAAAAABJRU5ErkJggg=="
-                      
+                      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Veg_symbol.svg/1024px-Veg_symbol.svg.png"
                       alt="Oopsy! image not rendering"
-                      className="w-17 h-9"
+                      className="w-13 h-7"
                      
                       />
                     )
                     }
                     {
                       item.itemAttribute?.vegClassifier==="NONVEG" && (
-                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAe1BMVEX///+lKiqkJyejISGhGBieAADToaGgERHiv7+pOjqiHR315+fFiIjDf3+iGxvMlpagDAzbsbH47+/p0NCpMjLs1dWgFBTx4eHdt7eoNTWvTEy0U1PCeXmnLi768/POlZW7aGiuRESyUFDVpaW+b2/Xq6u2W1u4YWHIjY3kqCW3AAADP0lEQVR4nO3ca1PiMBSAYZNSi6hYuXphAdcb//8XrjhoEdI26SbhZHyf78n6TjM9gpk9OwMAAAAAAAAAAAAAAAAAAABg57zMYhrcxy+c6agu4hf2lBrEotVpCgdXkWweTvQM82j/2HVGYQAUekVhEBR6RWEQFHpFYRAUekVhEBR6RWEQFHpFYRAUekVhEF0LH+cdFqVUeJs/dFiVUOFI6fLOfVlChYuh0n+WzsvSKRznSqnhtfO6dAon+qNQlWPXdckUrnrbQKWfXBemUjjPPh+hUsW548pUCteZ2ikv3VYmUnhXfgWq7M1taRqFS62/C1Vx67Q2jcKPUVjRE6ehmEThNFf7elcui5MofNI/ClUxdVicQuHN7Geg21BMoPB7FO49RIehmEBhNQor5ch6ufzCfnkcqLK19Xr5hfrojH6eU+tPiuILr4emQKXvbYei9MKp6YxuWQ9F6YV/Da+Z3Tm1HIrCC58PR+Hey8byaynZhZcD42tm9xCfrfaQXWgahdXLpmc1FEUX9vOGwI9z+mKziejC41/XDs5p32ITyYVXveZApS8shqLgwmn9e/SLzVAUXPjY9JrZKduHotzC16I90OaTotjCUdtrZvcQX9s2Elu4HtgEKp21DUWphS2jsDJYtOwktXBidUa32oai0MJN2yjcO6ctP7/Mwql9oFKzTeNeMgvfLEZhJW+8wCCy8Lbug71Z9ti0mcTCkfnLp3pF01CUWPhiNworWjUMRYGFY9tRWBk2DEWBhReOZ3SrqL/AIK9w5TIpvjT8Bi6ucN705VO92apuQ3GFbqOwktddYJBWeOc2Ciu1FxiEFS7tPhWa1F1gEFa4MP8dxoaemIeirMJx1zO6VXOrT1bh4ZUEN7lxKIoqPLqS4MY8FCUVdhyFFeMFBkmF7x1HYWVmGIqCCjuPwkr2frytnMJl8Z9ndMtwgUFOYc2VBDeGCwxiCsd5b+hBfjQUxRS+rm682Bw+RDGFwVAYBIVeURgEhV5RGASFXlEYBIVeURgEhV5RGASFXlEYBIVenazwMpLR4kSFKo8lO9H/Oh/TKQrzIqZSRS+c9yOLXggAAAAAAAAAAAAAAAAAAAAAAAAAwO/0Dw3jSYf0UtTrAAAAAElFTkSuQmCC"
-                        alt="Oopsy! image not rendering"
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Non_veg_symbol.svg/1024px-Non_veg_symbol.svg.png"
+                          alt="Oopsy! image not rendering"
                         className="w-13 h-7 "
                         />
                       )
@@ -111,5 +110,5 @@ function Cart(){
   );
 }
 export default Cart;
-   
+  //  https://www.nykaa.com/app-api/index.php/react/navigation?forDevice=desktop
             
