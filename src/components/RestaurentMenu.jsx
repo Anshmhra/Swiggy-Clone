@@ -1,26 +1,19 @@
 import { useParams } from "react-router-dom";
 import { useState ,useEffect} from "react";
 import Manu from "./Manu";
+import UseRestaurentMenu from "../Hooks/UseRestaurentMenu";
 
 function RestaurantMenu(){
 
    const {restId} =useParams();
 
-   const[ restInfo, SetRestinfo] =useState();
+  const restInfo=UseRestaurentMenu(restId);
 
-   useEffect(()=>{
 
-    fetch(`https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9628669&lng=77.57750899999999&restaurantId=${restId}&catalog_qa=undefined&submitAction=ENTER`)
-    .then((Response)=> Response.json())
-    .then((roy)=>{SetRestinfo(roy)
-        console.log(roy);
-    })
-   },[])
      const cards = restInfo?.data?.cards;
 
   const restDetails = cards?.[2]?.card?.card?.info;
   const tabs = cards?.[1]?.card?.card?.tabs;
-
 
 
   const offer= cards?.[3]?.card?.card?.gridElements?.infoWithStyle?.offers;
@@ -63,7 +56,9 @@ function RestaurantMenu(){
 
            <div className=" flex gap-12 mt-5 flex-wrap  ">
 
-           <div className="  border p-2 h-18 rounded-2xl  w-78">
+            {
+              offer?.[0]?.info &&(
+                 <div className="  border p-2 h-18 rounded-2xl  w-78">
           
             <img src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_96,h_96/offers/deal-of-day"
             
@@ -71,10 +66,16 @@ function RestaurantMenu(){
             />
             <div className="-mt-12">
            <p className="font-extrabold ml-18">{offer?.[0]?.info?.header}</p>   
-           <p className="text-gray-700 font-bold ml-18">{offer?.[0]?.info?.description}</p></div>
+           <p className="text-gray-700 font-bold ml-18">{offer?.[0]?.info?.description}</p>
+           </div>
           </div>
+              )
+            }
 
-           <div className="   border p-3 rounded-2xl w-80">
+          
+            {
+              offer?.[1]?.info &&(
+                 <div className="   border p-3 rounded-2xl w-80">
           
            <img src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_96,h_96/offers/generic"
            
@@ -82,10 +83,15 @@ function RestaurantMenu(){
            />
            <div className="-mt-12">
            <p className="font-extrabold ml-12">{offer?.[1]?.info?.header}</p>   
-           <p className="text-gray-700 font-bold ml-12">{offer?.[1]?.info?.description}</p></div>
+           <p className="text-gray-700 font-bold ml-12">{offer?.[1]?.info?.description}</p>
+           </div>
           </div>
-
-              <div className="   border p-3 rounded-2xl w-80">
+              )
+            }
+          
+              {
+                offer?.[2]?.info &&(
+                  <div className="   border p-3 rounded-2xl w-80">
           
            <img src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_96,h_96/offers/generic"
            
@@ -95,9 +101,12 @@ function RestaurantMenu(){
            <p className="font-extrabold ml-12">{offer?.[2]?.info?.header}</p>   
            <p className="text-gray-700 font-bold ml-12">{offer?.[2]?.info?.description}</p></div>
           </div>
-
-
-           <div className="  border p-3 rounded-2xl w-80">
+                )
+              }
+              
+          {
+            offer?.[3]?.info &&(
+                 <div className="  border p-3 rounded-2xl w-80">
           
            <img src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_96,h_96/MARKETING_BANNERS/IMAGES/OFFERS/2025/5/27/47401195-2e95-4f53-bb7c-367fa0316dc7_AMEXMenuLogo.png"
            
@@ -107,9 +116,13 @@ function RestaurantMenu(){
            <p className="font-extrabold ml-12">{offer?.[3]?.info?.header}</p>   
            <p className="text-gray-700 font-bold ml-12">{offer?.[3]?.info?.description}</p></div>
           </div>
+            )
+          }
 
-
-            <div className="   border p-3 rounded-2xl w-80">
+        
+          {
+            offer?.[4]?.info &&(
+               <div className="   border p-3 rounded-2xl w-80">
           
            <img src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_96,h_96/MARKETING_BANNERS/IMAGES/OFFERS/2025/6/2/cbcaf732-4dd1-40d7-a756-e78def3542f1_OneCardMenuVisibilityNewLogo.png"
           
@@ -122,6 +135,12 @@ function RestaurantMenu(){
            <p className="text-gray-700 font-bold ml-12">{offer?.[4]?.info?.description}</p>  </div>
           </div>
 
+            )
+            
+          }
+
+           
+
           </div>
 
            <Manu restId={restId} restInfo={restInfo} cards={cards} restDetails={restDetails} />
@@ -131,3 +150,5 @@ function RestaurantMenu(){
     )
 }
 export default RestaurantMenu;
+ 
+ 

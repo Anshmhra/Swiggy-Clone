@@ -11,17 +11,43 @@ import { Outlet } from "react-router-dom";
 function Fetch({setget,}){
 
 
-
-     useEffect(()=>{
-
-    fetch(` https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9628669&lng=77.57750899999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`)
+  useEffect(()=>{
+    // navigator.geolocation.getCurrentPosition((position)=>{
+      
+    //   const {latitude,longitude}=position.coords;
+    //   console.log("📍 Your Coordinates:", latitude, longitude);
+    const latitude=31.8443385;
+    const longitude=75.6914986;
+      fetch(` https://www.swiggy.com/dapi/restaurants/list/v5?lat=${latitude}&lng=${longitude}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`)
     .then((response)=> response.json())
     .then((data)=> {{
-        setget(data.data.cards[1].card.card.gridElements.infoWithStyle.restaurants);
+
+
+      const cards = data?.data?.cards || [];
+
+      const restaurantCard=cards.find((card)=>
+         card.card?.card?.gridElements?.infoWithStyle?.restaurants
+      );
+
+       const Restaurant =
+          restaurantCard?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+
+          if(Restaurant){
+              setget(Restaurant);
+          }else{
+             console.warn("⚠️ Restaurants not found in response", data)
+          }
+
+       
        console.log(data);
      }})
     .catch((error)=> console.log(error));
-   },[]);
+
+   
+  },[])
+
+
+
 
 
     return(
@@ -39,3 +65,5 @@ function Fetch({setget,}){
        
 }
 export default Fetch;
+
+  

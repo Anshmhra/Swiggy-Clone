@@ -1,7 +1,9 @@
+import UseLocation from "../Hooks/UseLoaction";
 function Token(){
+    const location=UseLocation();
     return (
         <div className="-ml-20">
-            <h1 className="ml-30 mt-15 font-bold text-2xl ">Restaurents With online food delivery in Bangalore</h1>
+            <h1 className="ml-30 mt-15 font-bold text-2xl ">Restaurents With online food delivery in {location}</h1>
             <div className="flex gap-5 ml-25 mt-7 font-semibold  ">
                 <button className="p-2 w-25 rounded-3xl shadow-2xl hover:scale-102 hover:cursor-pointer">Filter</button>
                 <button className=" w-25  rounded-3xl shadow-2xl hover:scale-102 hover:cursor-pointer">Sort By </button>
