@@ -18,9 +18,7 @@ function RestaurantMenu(){
 
   const offer= cards?.[3]?.card?.card?.gridElements?.infoWithStyle?.offers;
   
-//    console.log({restId});
-// const game=restInfo?.data?.cards[1].card?.card.tabs[1];
-// const detail=restInfo?.data?.cards[2].card?.card?.info;
+
     return (
         <div className=" ml-58 mt-10">
             <h1 className="text-3xl font-bold mt-10">{restDetails?.name}</h1>

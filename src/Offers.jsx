@@ -1,5 +1,19 @@
+import UseOnline from "./Hooks/UseOnline";
+
 function Offer(){
-    return(
+    const Online=UseOnline();
+
+
+     if(Online===false){
+        return(
+            <div className="flex justify-center items-center h-screen">
+            <h1 className="font-bold text-2xl">Looks like you're offline, Please check your internet connection.</h1>
+             </div>
+        )
+     }
+
+
+        return(
         <div>
             <div>
             <div className="hover:scale-105 duration-100">

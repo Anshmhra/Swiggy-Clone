@@ -6,8 +6,6 @@ import Footer from "./Footer"
 import { Outlet } from "react-router-dom";
 
 
-
-
 function Fetch({setget,}){
 
 
@@ -46,19 +44,8 @@ function Fetch({setget,}){
    
   },[])
 
-
-
-
-
-    return(
+ return(
     <div className="mt-0 h-3 p-4  ">
-          
-          
-       
-
-       
-        
-
     </div>
     )
    
