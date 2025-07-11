@@ -1,5 +1,15 @@
 import { Link } from "react-router-dom";
+import UseLoad from "../Hooks/UseLoad";
 function SwiggyCorporate(){
+    const load=UseLoad();
+
+    if(load){
+  return(
+    <div className="flex justify-center items-center h-screen">
+      <h1 className="text-2xl font-bold">Loading Please Wait...</h1>
+    </div>
+  )
+}
     return(
         <div className="h-250 p-9 mt-4 bg-amber-600 rounded-2xl">
             <nav className= " flex bg-amber-600  " >

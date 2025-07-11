@@ -1,7 +1,17 @@
 import UseOnline from "./Hooks/UseOnline";
+import UseLoad from "./Hooks/UseLoad";
 
 function Offer(){
     const Online=UseOnline();
+    const load=UseLoad();
+
+    if(load){
+  return(
+    <div className="flex justify-center items-center h-screen">
+      <h1 className="text-2xl font-bold">Loading Please Wait...</h1>
+    </div>
+  )
+}
 
 
      if(Online===false){

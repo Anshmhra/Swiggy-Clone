@@ -17,6 +17,7 @@ function RestaurantMenu(){
 
 
   const offer= cards?.[3]?.card?.card?.gridElements?.infoWithStyle?.offers;
+
   
 
     return (
@@ -94,6 +95,7 @@ function RestaurantMenu(){
            <img src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_96,h_96/offers/generic"
            
            className="w-12"
+           alt="oopsy!"
            />
            <div className="-mt-12">
            <p className="font-extrabold ml-12">{offer?.[2]?.info?.header}</p>   
@@ -106,8 +108,8 @@ function RestaurantMenu(){
             offer?.[3]?.info &&(
                  <div className="  border p-3 rounded-2xl w-80">
           
-           <img src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_96,h_96/MARKETING_BANNERS/IMAGES/OFFERS/2025/5/27/47401195-2e95-4f53-bb7c-367fa0316dc7_AMEXMenuLogo.png"
-           
+           <img src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_96,h_96/offers/generic"
+           alt="oopsy!"
            
            className="w-12"/>
            <div className="-mt-12">
@@ -123,7 +125,7 @@ function RestaurantMenu(){
                <div className="   border p-3 rounded-2xl w-80">
           
            <img src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_96,h_96/MARKETING_BANNERS/IMAGES/OFFERS/2025/6/2/cbcaf732-4dd1-40d7-a756-e78def3542f1_OneCardMenuVisibilityNewLogo.png"
-          
+          alt="oopsy!"
           className="w-12"
           />
            <div className="-mt-12 ">

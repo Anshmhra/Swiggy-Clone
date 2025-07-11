@@ -2,10 +2,20 @@ import { Link } from "react-router-dom";
 import Token from "./Token";
 import { useOutletContext } from "react-router-dom";
 import { useCart } from "../context/CartContext";
+import UseLoad from "../Hooks/UseLoad";
 
 function Display({get,query}){
 
     const {addToCart}=useCart();
+    const load=UseLoad();
+
+     if(load){
+  return(
+    <div className="flex justify-center items-center h-screen">
+      <h1 className="text-2xl font-bold">Loading Please Wait...</h1>
+    </div>
+  )
+}
       
    
     return(

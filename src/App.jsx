@@ -13,6 +13,7 @@ function App({setQuery,Query}) {
   return (
     <>
       <Navbar setQuery={setQuery} query={Query}/>
+      
         <Outlet  />
     
     
