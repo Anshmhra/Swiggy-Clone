@@ -2,12 +2,16 @@ import { useParams } from "react-router-dom";
 import { useState ,useEffect} from "react";
 import Manu from "./Manu";
 import UseRestaurentMenu from "../Hooks/UseRestaurentMenu";
+import useLocation from "../Hooks/UseLoaction";
 
 function RestaurantMenu(){
 
    const {restId} =useParams();
+   
 
   const restInfo=UseRestaurentMenu(restId);
+  const location = useLocation();
+    const restaurantImageId = location.state?.restaurantImage || "";
 
 
      const cards = restInfo?.data?.cards;
@@ -21,6 +25,7 @@ function RestaurantMenu(){
   
 
     return (
+      
         <div className=" ml-58 mt-10">
             <h1 className="text-3xl font-bold mt-10">{restDetails?.name}</h1>
             
@@ -53,11 +58,11 @@ function RestaurantMenu(){
            </div>
            <p className="text-2xl font-bold mt-6">Deals for you</p>
 
-           <div className=" flex gap-12 mt-5 flex-wrap  ">
+           <div className=" flex gap-12 mt-5 mr-57 -ml-10 flex-shrink-0  whitespace-nowrap overflow-x-auto scrollbar-hide   ">
 
             {
               offer?.[0]?.info &&(
-                 <div className="  border p-2 h-18 rounded-2xl  w-78">
+                 <div className="  border p-2 h-18 rounded-2xl inline-block  w-110">
           
             <img src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_96,h_96/offers/deal-of-day"
             
@@ -74,13 +79,13 @@ function RestaurantMenu(){
           
             {
               offer?.[1]?.info &&(
-                 <div className="   border p-3 rounded-2xl w-80">
+                 <div className="  border p-3 rounded-2xl w-110 h-19 inline-block ">
           
            <img src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_96,h_96/offers/generic"
            
-             className="w-12 "
+             className="w-12  "
            />
-           <div className="-mt-12">
+           <div className="-mt-12 ">
            <p className="font-extrabold ml-12">{offer?.[1]?.info?.header}</p>   
            <p className="text-gray-700 font-bold ml-12">{offer?.[1]?.info?.description}</p>
            </div>
@@ -90,7 +95,7 @@ function RestaurantMenu(){
           
               {
                 offer?.[2]?.info &&(
-                  <div className="   border p-3 rounded-2xl w-80">
+                  <div className="   border p-3 rounded-2xl w-110 h-19 inline-block ">
           
            <img src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_96,h_96/offers/generic"
            
@@ -106,7 +111,7 @@ function RestaurantMenu(){
               
           {
             offer?.[3]?.info &&(
-                 <div className="  border p-3 rounded-2xl w-80">
+                 <div className="  border p-3 rounded-2xl w-110 h-19 inline-block ">
           
            <img src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_96,h_96/offers/generic"
            alt="oopsy!"
@@ -122,7 +127,7 @@ function RestaurantMenu(){
         
           {
             offer?.[4]?.info &&(
-               <div className="   border p-3 rounded-2xl w-80">
+               <div className="   border p-3 rounded-2xl  h-20 inline-block w-[300px]">
           
            <img src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_96,h_96/MARKETING_BANNERS/IMAGES/OFFERS/2025/6/2/cbcaf732-4dd1-40d7-a756-e78def3542f1_OneCardMenuVisibilityNewLogo.png"
           alt="oopsy!"
@@ -143,7 +148,7 @@ function RestaurantMenu(){
 
           </div>
 
-           <Manu restId={restId} restInfo={restInfo} cards={cards} restDetails={restDetails} />
+           <Manu restId={restId} restInfo={restInfo} cards={cards} restDetails={restDetails} restaurantImageId={restaurantImageId} />
          
          
         </div>

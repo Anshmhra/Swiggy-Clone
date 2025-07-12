@@ -1,13 +1,16 @@
 import { Link } from "react-router-dom";
-import Token from "./Token";
+// import Token from "./Token";
 import { useOutletContext } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import UseLoad from "../Hooks/UseLoad";
+import { lazy, Suspense } from "react";
 
 function Display({get,query}){
 
     const {addToCart}=useCart();
     const load=UseLoad();
+
+    const Token=lazy(()=>import("./Token"));
 
      if(load){
   return(
@@ -20,7 +23,7 @@ function Display({get,query}){
    
     return(
         <div className="flex flex-wrap gap-10 justify-center -mt-8 ">
-            <Token/>
+            <Suspense><Token/></Suspense>
              {
                 
             get?.filter((rest)=>
@@ -28,7 +31,7 @@ function Display({get,query}){
                 rest?.info?.name?.toLowerCase().includes(query)
               )
             .map((rest) =>(
-                <Link to={`restaurents/${rest.info.id}`} key={rest.info.id}> 
+                <Link to={`restaurents/${rest.info.id}`} state={{ restaurantImage: rest.info.cloudinaryImageId}}key={rest.info.id}> 
                     <div key={rest.info.id} className="w-65  hover:scale-94 duration-300 hover:cursor-pointer hover:shadow  rounded-3xl ">
                     <img src={`https://media-assets.swiggy.com/swiggy/image/upload/${rest.info.cloudinaryImageId}`} 
                     alt={rest.info.name}

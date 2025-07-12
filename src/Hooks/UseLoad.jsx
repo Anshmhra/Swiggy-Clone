@@ -6,7 +6,7 @@ function UseLoad(){
 
 
     useEffect(()=>{
-        const Timer=setTimeout(()=>setLoad(false),1000);
+        const Timer=setTimeout(()=>setLoad(false),2000);
         return()=>clearTimeout(Timer);
     },[]);
     

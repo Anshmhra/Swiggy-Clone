@@ -2,7 +2,7 @@ import { lazy, StrictMode, Suspense } from 'react'
 import { createRoot } from 'react-dom/client'
 import { useState } from 'react'
 import './index.css'
-import App from './App.jsx'
+// import App from './App.jsx'
 import {createBrowserRouter,RouterProvider,} from "react-router-dom";
 // import SwiggyCorporate from './components/SwiggyCorporate';
 
@@ -31,8 +31,12 @@ function Main(){
 
     const RestaurantMenu=lazy(()=>import("./components/RestaurentMenu.jsx"));
  
+    const App=lazy(()=>import("./App.jsx"));
   const Error=lazy(()=>import("./components/Error.jsx"));
+  
+    // const Fetch=lazy(()=>import("./components/Fetch.jsx"));
   const load=UseLoad();
+
 
   
   
@@ -45,7 +49,7 @@ function Main(){
   const router=createBrowserRouter([
   {
     path:"/",
-    element: <App setQuery={setQuery} query={query}/>,
+    element: <Suspense><App setQuery={setQuery} query={query}/></Suspense>,
     children:[
       {
         path:"/",

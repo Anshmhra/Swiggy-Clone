@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useCart } from "../context/CartContext";
-function Manu({restId,restInfo,cards,restDetails}){
+import RestaurantMenu from "./RestaurentMenu";
+// import {cloudinaryImageId} from "./Display"
+function Manu({restId,restInfo,cards,restDetails,restaurantImageId}){
 
    
    const {addToCart,CartItems,removeFromManu}=useCart();
@@ -31,6 +33,7 @@ function Manu({restId,restInfo,cards,restDetails}){
                 
                 Info?.map((section,id)=>{
                    const more= section?.card?.card?.itemCards;
+                   
                        if (!Array.isArray(more)) return null;
 
                         const filter=more.filter((prod)=>{
@@ -48,13 +51,14 @@ function Manu({restId,restInfo,cards,restDetails}){
 
 
                        const pop=dtail?.itemAttribute?.vegClassifier;
-                       const Cartaction=CartItems.some((CartObj) => CartObj.item.id === dtail.id);
+                       const Cartaction=CartItems.some((CartObj) => CartObj.item?.id === dtail.id);
                               const isInCart = !!Cartaction;
                       
 
 
                        return(
-                       <div key={dtail.id} className="shadow m-5 rounded-2xl  h-62 p-3 w-230">
+                        
+                       <div key={dtail.id} className="shadow m-5 rounded-2xl  h-65 p-3 w-230">
 
                         {
                           pop ==="VEG" && (
@@ -72,21 +76,30 @@ function Manu({restId,restInfo,cards,restDetails}){
                             />
                           )
                         }
+                       
                         {
-                            <img src={`https://media-assets.swiggy.com/swiggy/image/upload/${imageId}`}
+                           <div className="relative w-fit">
+                           <img src={`https://media-assets.swiggy.com/swiggy/image/upload/${imageId || restaurantImageId }`}
                             alt={name}
-                            className="w-40 h-35 rounded-2xl  mt-2 ml-180"
+                            className="w-40 h-35 rounded-2xl  -mt-1 ml-180"
                             />
+                            
+                            
+                           </div>
                         }
+                       
+
+                        
                         {
                           isInCart?(
-                              <div  className="">
-                              <div className=" flex  w-28  h-10  ml-185 gap-5 font-extrabold rounded-2xl shadow-2xl hover:cursor-pointer overflow-hidden hover:bg-gray-300 ">
+                              <div  className="bg-white">
+                              <div className=" flex  w-28 -mt-2 h-10  ml-185 gap-5 font-extrabold absolute z-20 rounded-2xl shadow-2xl bg-white hover:cursor-pointer overflow-hidden hover:bg-gray-300 ">
                               <button onClick={()=>removeFromManu(dtail.id)}
-                                className="hover:text-emerald-800 ml-9 "
+                                className="hover:text-emerald-800 ml-3 text-2xl"
                                 
                                 >-</button>
-                              <button className="hover:text-emerald-800  ">+</button>
+                                   <span className="ml-2 mt-2">{CartItems.find((jo) => jo.item.id === dtail.id)?.quantity || 1}</span>
+                              <button className="hover:text-emerald-800 ml-2 text-2xl ">+</button>
                               </div>
 
                             </div>
@@ -96,20 +109,24 @@ function Manu({restId,restInfo,cards,restDetails}){
                           
                             <div>
                             <button onClick={()=>addToCart(dtail,restDetails?.cloudinaryImageId,restDetails?.areaName ,restDetails?.name)}
-                               className="ml-185 -mt-6 w-30 h-10 bg-neutral-100 rounded-2xl shadow-2xl hover:cursor-pointer overflow-hidden hover:bg-gray-300 text-emerald-700 font-bold"
+                               className="ml-185 -mt-2 w-30 h-10 absolute bg-neutral-100 rounded-2xl shadow-2xl hover:cursor-pointer overflow-hidden hover:bg-gray-300 text-emerald-700 font-bold"
 
                               >Add</button>
-                            <p className="ml-190 text-gray-600 font-[10px]">Customiable</p>
+                          
                             </div>
+                            
                           )
                         }
-                        
                         {
-                            <p className="-mt-42 ml-6 font-bold text-gray-700">{name}</p>
+                            <p className="ml-188 mt-7 text-gray-600 font-[10px] ">Customiable</p>
+                        }
+                        
+                        {name &&( <p className="-mt-40 ml-6 font-bold text-gray-700">{name}</p>)
+                           
                         }
                         <div className="flex">
                         {
-                            <p className=" ml-6 font-bold">₹{(defaultPrice || price ||0)/100}</p>
+                            <p className=" ml-6 font-bold mt-2">₹{(defaultPrice || price ||0)/100}</p>
                         }
                         {
                           <p>{title}</p>
@@ -119,18 +136,18 @@ function Manu({restId,restInfo,cards,restDetails}){
                         }
                         </div>
                         <div className="flex mt-1  ">
-                        <img src="data:image/jpeg;base64,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"
-                        className="w-3 h-3 ml-5 mt-0.6 "
+                        <img src="data:image/png;base64,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"                     
+                        className="w-3 h-3 ml-5 mt-1 "
                         />
                         {    
                              
-                            <p className="text-emerald-700 font-medium ml-2 -mt-1">{dtail?.ratings?.aggregatedRating?.rating || "No rating"}</p>
+                            <p className="text-emerald-800 font-medium ml-2 ">{dtail?.ratings?.aggregatedRating?.rating || "No rating"}</p>
                         }</div>
 
                       
 
                         {
-                          <p className=" line-clamp-2  w-155 text-sm text-gray-700 mt-3 ml-5 font-semibold ">{description?.trim() ? description:"No description avialable"}</p> 
+                          <p className=" line-clamp-2  w-155 text-sm text-gray-700 mt-3  ml-5 font-semibold ">{description?.trim() ? description:"No description avialable"}</p> 
 
                             
                         } <h2 className="ml-161 -mt-6 font-bold text-gray-700 ">more</h2>
