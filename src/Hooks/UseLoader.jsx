@@ -1,6 +1,6 @@
 import { useState,useEffect } from "react";
 
-function Loader(){
+function UseLoader(){
 
     const [Loaded,setLoad]=useState(true);
 
@@ -12,4 +12,4 @@ function Loader(){
     
     return Loaded;
 }
-export default Loader;
+export default UseLoader;

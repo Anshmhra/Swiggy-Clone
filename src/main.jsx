@@ -16,7 +16,7 @@ import Footer from './components/Footer.jsx'
 // import Cart from './Cart.jsx'
 // import RestaurantMenu from './components/RestaurentMenu.jsx'
 import { CartProvider } from './context/CartContext.jsx'
-import Loader from './Hooks/Loader.jsx';
+import UseLoader from './Hooks/UseLoader.jsx';
 
 
 
@@ -62,19 +62,19 @@ function Main(){
       },
       {
         path:"SwiggyCorporate",
-        element:<Suspense fallback={<Loader/>}>
+        element:<Suspense fallback={<UseLoader/>}>
           <SwiggyCorporate/>
         </Suspense>
       },
       {
         path:"Offers",
-        element:<Suspense fallback={<Loader/>}>
+        element:<Suspense fallback={<UseLoader/>}>
           <Offer/>
         </Suspense>
       },
        {
         path:"Cart",
-        element:<Suspense fallback={<Loader/>}>
+        element:<Suspense fallback={<UseLoader/>}>
           <Cart/>
         </Suspense>
       },

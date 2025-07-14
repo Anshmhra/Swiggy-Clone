@@ -2,13 +2,13 @@ import { Link } from "react-router-dom";
 // import Token from "./Token";
 import { useOutletContext } from "react-router-dom";
 import { useCart } from "../context/CartContext";
-import UseLoad from "../Hooks/Loader";
+import UseLoader from "../Hooks/UseLoader";
 import { lazy, Suspense } from "react";
 
 function Display({get,query}){
 
     const {addToCart}=useCart();
-    const Load=UseLoad();
+    const Load=UseLoader();
 
     const Token=lazy(()=>import("./Token"));
 
