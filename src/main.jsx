@@ -16,7 +16,7 @@ import Footer from './components/Footer.jsx'
 // import Cart from './Cart.jsx'
 // import RestaurantMenu from './components/RestaurentMenu.jsx'
 import { CartProvider } from './context/CartContext.jsx'
-import UseLoad from './Hooks/UseLoad.jsx'
+import Loader from './Hooks/Loader.jsx';
 
 
 
@@ -35,7 +35,7 @@ function Main(){
   const Error=lazy(()=>import("./components/Error.jsx"));
   
     // const Fetch=lazy(()=>import("./components/Fetch.jsx"));
-  const load=UseLoad();
+
 
 
   
@@ -62,19 +62,19 @@ function Main(){
       },
       {
         path:"SwiggyCorporate",
-        element:<Suspense fallback={<load/>}>
+        element:<Suspense fallback={<Loader/>}>
           <SwiggyCorporate/>
         </Suspense>
       },
       {
         path:"Offers",
-        element:<Suspense fallback={<load/>}>
+        element:<Suspense fallback={<Loader/>}>
           <Offer/>
         </Suspense>
       },
        {
         path:"Cart",
-        element:<Suspense fallback={<load/>}>
+        element:<Suspense fallback={<Loader/>}>
           <Cart/>
         </Suspense>
       },

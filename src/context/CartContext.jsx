@@ -27,7 +27,15 @@ export function CartProvider({children}){
    
    }
   
+function decreasInItem(itemId){
+  // const decearse=CartItems.find(find=>find.item.id!==itemId);
+  setCartItems((prevItems)=>
+  prevItems.map((obk)=>obk.item.id==itemId
+  ? {...obk,quantity: obk.quantity-1}
+  : obk
+)   .filter((obj) => obj.quantity > 0))
 
+}
    
  function remove(itemId){
   const removeCart= CartItems.filter((cartobj)=>cartobj.item.id!==itemId);
@@ -39,12 +47,19 @@ function removeFromManu(itemId){
   setCartItems((prev)=>prev.filter((CartObj)=> CartObj.item.id !== itemId));
 
 }
-function additionInMenu(itemId){
-  setCartItems()
+function additionInItem(itemId){
+  const exist=CartItems.find(mole=>mole.item.id===itemId)
+  if(exist){
+     setCartItems((prevItems)=>
+      prevItems.map((obj)=>obj.item.id===itemId
+    ?{...obj,quantity:obj.quantity+1}:obj
+  ));
+  }
+ 
 }
 
     return(
-        <CartContext.Provider value={{CartItems,addToCart,remove ,removeFromManu}}>{children}</CartContext.Provider>
+        <CartContext.Provider value={{CartItems,addToCart,remove ,removeFromManu,additionInItem,decreasInItem}}>{children}</CartContext.Provider>
     )
 }
 

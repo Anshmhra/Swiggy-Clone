@@ -1,8 +1,8 @@
 import { useState,useEffect } from "react";
 
-function UseLoad(){
+function Loader(){
 
-    const [load,setLoad]=useState(true);
+    const [Loaded,setLoad]=useState(true);
 
 
     useEffect(()=>{
@@ -10,6 +10,6 @@ function UseLoad(){
         return()=>clearTimeout(Timer);
     },[]);
     
-    return load;
+    return Loaded;
 }
-export default UseLoad;
+export default Loader;

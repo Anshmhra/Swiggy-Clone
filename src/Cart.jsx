@@ -3,8 +3,11 @@ import { useState } from "react";
 import Manu from "./components/Manu";
 
 function Cart(){
-    const {CartItems,remove}=useCart();
-    
+    const {CartItems,remove,additionInItem,decreasInItem}=useCart();
+     
+    const TotalAmount=CartItems.reduce((acc,curr)=>{
+      return acc+(curr.item.price * curr.quantity)/100;
+    },0)
 
 
 
@@ -86,24 +89,35 @@ function Cart(){
                 <span className="flex justify-between align-middle ml-28">{
                   <div className=" ">
                   
-                  <div className="flex   border p-3 gap-4 ">
-                    <button type="button" className="font-bold hover:scale-95 hover:text-green-800 hover:cursor-pointer" onClick={()=>remove(item?.id)}>-</button>
-                    <button className="font-bold hover:scale-95 hover:text-green-800 hover:cursor-pointer ">+</button>
+                  <div className="flex rounded-2xl shadow border-1 border-emerald-600 p-3 gap-4 ">
+                    <button type="button" className="font-bold hover:scale-95 hover:text-green-800 hover:cursor-pointer" onClick={()=>decreasInItem(item?.id)}>-</button>
+                      <span className="font-semibold text-lg">{CartItem.quantity}</span>
+                    <button onClick={()=>additionInItem(item?.id)}
+                    className="font-bold hover:scale-95 hover:text-green-800 hover:cursor-pointer ">
+                      +</button>
                   </div>
                   </div>
          
                   
                   }</span>
-                <span className="text-right ml-28">₹{(item?.defaultPrice || item.price ||0)/100}</span>
+                <span className="text-right ml-28 font-semibold">₹{((item?.defaultPrice || item.price ||0)*CartItem.quantity)/100}</span>
+             
                 </li>
+               
 
               )
+              
             })}
               
             
            
             
         </ul>
+        
+        <p className="text-right mt-4 font-bold">Total amount: ₹{TotalAmount.toFixed(2)}</p>
+        <div className=" p-3 w-40 rounded-2xl shadow bg-emerald-500 text-white font-semibold hover:cursor-pointer mt-3 ml-70">
+        <button className="hover:cursor-pointer ml-1">Click To Proceed</button>
+        </div>
         </div>
       )}
     </div>

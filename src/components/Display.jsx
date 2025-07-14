@@ -2,17 +2,17 @@ import { Link } from "react-router-dom";
 // import Token from "./Token";
 import { useOutletContext } from "react-router-dom";
 import { useCart } from "../context/CartContext";
-import UseLoad from "../Hooks/UseLoad";
+import UseLoad from "../Hooks/Loader";
 import { lazy, Suspense } from "react";
 
 function Display({get,query}){
 
     const {addToCart}=useCart();
-    const load=UseLoad();
+    const Load=UseLoad();
 
     const Token=lazy(()=>import("./Token"));
 
-     if(load){
+     if(Load){
   return(
     <div className="flex justify-center items-center h-screen">
       <h1 className="text-2xl font-bold">Loading Please Wait...</h1>

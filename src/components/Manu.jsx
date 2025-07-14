@@ -6,7 +6,7 @@ import RestaurantMenu from "./RestaurentMenu";
 function Manu({restId,restInfo,cards,restDetails,restaurantImageId}){
 
    
-   const {addToCart,CartItems,removeFromManu}=useCart();
+   const {addToCart,CartItems,removeFromManu,additionInItem,decreasInItem}=useCart();
     const [required ,setRequired]=useState("");
     // const [display ,setDisplay]=useState();
     const Info=cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
@@ -92,14 +92,15 @@ function Manu({restId,restInfo,cards,restDetails,restaurantImageId}){
                         
                         {
                           isInCart?(
-                              <div  className="bg-white">
+                              <div  className="border-emerald-700">
                               <div className=" flex  w-28 -mt-2 h-10  ml-185 gap-5 font-extrabold absolute z-20 rounded-2xl shadow-2xl bg-white hover:cursor-pointer overflow-hidden hover:bg-gray-300 ">
-                              <button onClick={()=>removeFromManu(dtail.id)}
-                                className="hover:text-emerald-800 ml-3 text-2xl"
+                              <button onClick={()=>decreasInItem(dtail.id)}
+                                className="text-emerald-800 ml-3 text-2xl hover:scale-95"
                                 
-                                >-</button>
-                                   <span className="ml-2 mt-2">{CartItems.find((jo) => jo.item.id === dtail.id)?.quantity || 1}</span>
-                              <button className="hover:text-emerald-800 ml-2 text-2xl ">+</button>
+                                >-</button >
+                                   <span className="ml-2 mt-2 text-emerald-800">{CartItems.find((jo) => jo.item.id === dtail.id)?.quantity || 1}</span>
+                              <button onClick={()=>additionInItem(dtail.id)}
+                              className="text-emerald-800 ml-2 text-2xl hover:scale-95 ">+</button>
                               </div>
 
                             </div>

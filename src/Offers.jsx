@@ -1,5 +1,5 @@
 import UseOnline from "./Hooks/UseOnline";
-import UseLoad from "./Hooks/UseLoad";
+import UseLoad from "./Hooks/Loader";
 
 function Offer(){
     const Online=UseOnline();
