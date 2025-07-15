@@ -42,10 +42,10 @@ function Cart(){
           CartItems.length > 0 && CartItems[0]?.restaurantImageId && (
             <div>
                <img src={`https://media-assets.swiggy.com/swiggy/image/upload/${CartItems[0]?.restaurantImageId}`}
-            className="w-15 ml-7 mt-4 rounded-2xl "
+            className="w-18 h-14 ml-7 mt-4 rounded-2xl "
             />
-             <p className="ml-26 -mt-15  font-semibold text-[18px]">{CartItems[0]?.locality}</p> 
-          <h2 className="ml-26 font-semibold text-gray-600">{CartItems[0]?.restaurantName}</h2>
+             <p className="ml-28 -mt-10  font-semibold text-[18px]">{CartItems[0]?.locality}</p> 
+          <h2 className="ml-28 font-semibold text-gray-600">{CartItems[0]?.restaurantName}</h2>
 
 
             </div>
