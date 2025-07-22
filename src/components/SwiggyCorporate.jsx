@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import UseLoad from "../Hooks/Loader";
+import UseLoad from "../Hooks/UseLoader";
 function SwiggyCorporate(){
     const load=UseLoad();
 

@@ -17,6 +17,8 @@ import Footer from './components/Footer.jsx'
 // import RestaurantMenu from './components/RestaurentMenu.jsx'
 import { CartProvider } from './context/CartContext.jsx'
 import UseLoader from './Hooks/UseLoader.jsx';
+import { Provider } from 'react-redux';
+import leon from './Redux/Tool.js';
 
 
 
@@ -102,7 +104,11 @@ function Main(){
     <Fetch setget={setget}/>
     
         {/* <Navbar setQuery={setQuery}/> */}
-        <CartProvider>  <RouterProvider router={router}/></CartProvider>
+        <CartProvider> 
+          <Provider store={leon}>
+            <RouterProvider router={router}/>
+          </Provider>
+        </CartProvider>
    
  
   

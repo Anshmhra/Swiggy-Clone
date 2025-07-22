@@ -4,13 +4,15 @@ import { useOutletContext } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import UseLoader from "../Hooks/UseLoader";
 import { lazy, Suspense } from "react";
-
+import { useSelector } from "react-redux";
+import { useMemo } from "react";
 function Display({get,query}){
 
     const {addToCart}=useCart();
     const Load=UseLoader();
 
     const Token=lazy(()=>import("./Token"));
+    const theme=useSelector((state)=>state.theme.mode);
 
      if(Load){
   return(
@@ -22,7 +24,7 @@ function Display({get,query}){
       
    
     return(
-        <div className="flex flex-wrap gap-10 justify-center -mt-8 ">
+        <div className="flex flex-wrap gap-10 justify-center -mt-8  ">
             <Suspense><Token/></Suspense>
              {
                 
@@ -32,7 +34,7 @@ function Display({get,query}){
               )
             .map((rest) =>(
                 <Link to={`restaurents/${rest.info.id}`} state={{ restaurantImage: rest.info.cloudinaryImageId}}key={rest.info.id}> 
-                    <div key={rest.info.id} className="w-65  hover:scale-94 duration-300 hover:cursor-pointer hover:shadow  rounded-3xl ">
+                    <div key={rest.info.id} className={theme=== "dark" ? "bg-gray-900 text-white w-65  hover:scale-94 duration-300 hover:cursor-pointer hover:shadow  rounded-3xl" : "bg-white text-black w-65  hover:scale-94 duration-300 hover:cursor-pointer hover:shadow  rounded-3xl"}>
                     <img src={`https://media-assets.swiggy.com/swiggy/image/upload/${rest.info.cloudinaryImageId}`} 
                     alt={rest.info.name}
                     className="rounded-3xl w-full h-[160px]  object-cover  "
@@ -60,3 +62,4 @@ function Display({get,query}){
     )
 }
 export default Display;
+// w-65  hover:scale-94 duration-300 hover:cursor-pointer hover:shadow  rounded-3xl  bg-gray-900 "
