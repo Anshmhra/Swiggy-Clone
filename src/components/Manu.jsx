@@ -19,7 +19,7 @@ function Manu({restId,restInfo,cards,restDetails,restaurantImageId}){
     return(
      
         <div className="-ml-12"> 
-            <h1 className={ theme=== "dark"? "bg-black text-[17px] font-bold flex text-gray-700 ml-100 mt-15" : " text-[17px] font-bold flex text-gray-700 ml-100 mt-15"}>--M E N U--</h1>
+            <h1 className={ theme=== "dark"? " text-[17px] font-bold flex text-gray-700 ml-100 mt-15" : " text-[17px] font-bold flex text-gray-700 ml-100 mt-15"}>--M E N U--</h1>
             <div >
             <input type="search" value={required} onChange={(e)=>setRequired(e.target.value)} placeholder= "  serach for dishes  " 
             className={ theme=== "dark"? "bg-gray-700 text-[16px] font-semibold ml-2 mt-5 border w-230 h-12 rounded-2xl" : " text-[16px] font-semibold ml-2 mt-5 border w-230 h-12 rounded-2xl bg-gray-100"}

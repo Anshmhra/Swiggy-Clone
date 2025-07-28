@@ -29,9 +29,9 @@ function RestaurantMenu(){
     return (
       
         <div className=" ml-58 mt-10">
-            <h1 className={ theme=== "dark"? "bg-black text-gray-500  text-3xl font-bold mt-10 " : " text-black  text-3xl font-bold mt-10 "}>{restDetails?.name}</h1>
+            <h1 className={ theme=== "dark"? " text-gray-500  text-3xl font-bold mt-10 " : " text-black  text-3xl font-bold mt-10 "}>{restDetails?.name}</h1>
             
-           <div className={ theme=== "dark"? "bg-black  text-[18px] text-gray-500    flex gap-5 font-bold mt-7" : " text-black  text-[18px]  flex gap-5 font-bold mt-7"}>
+           <div className={ theme=== "dark"? "  text-[18px] text-gray-500    flex gap-5 font-bold mt-7" : " text-black  text-[18px]  flex gap-5 font-bold mt-7"}>
            <h3 className="text-amber-600">{tabs?.[0]?.title }</h3>
           
            <h3>{tabs?.[1]?.title}</h3>
@@ -58,7 +58,7 @@ function RestaurantMenu(){
               </div>
 
            </div>
-           <p className={ theme=== "dark"? "bg-black text-gray-500 text-[24px] font-bold mt-6" : " text-black text-[24px] font-bold mt-6"}>Deals for you</p>
+           <p className={ theme=== "dark"? " text-gray-500 text-[24px] font-bold mt-6" : " text-black text-[24px] font-bold mt-6"}>Deals for you</p>
 
            <div className={ theme=== "dark"? "bg-black text-gray-500 text-[14px] font-bold mt-6 flex gap-12 mr-57 -ml-3 flex-shrink-0  whitespace-nowrap overflow-x-auto scrollbar-hide  " : " text-black text-[14px] font-bold  flex gap-12 mt-5 mr-57 -ml-3 flex-shrink-0  whitespace-nowrap overflow-x-auto scrollbar-hide  "}>
 
