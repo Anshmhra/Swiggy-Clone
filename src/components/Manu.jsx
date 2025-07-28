@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useCart } from "../context/CartContext";
 import RestaurantMenu from "./RestaurentMenu";
+import { useSelector } from "react-redux";
+import { FaMagnifyingGlass } from "react-icons/fa6";
 // import {cloudinaryImageId} from "./Display"
 function Manu({restId,restInfo,cards,restDetails,restaurantImageId}){
 
@@ -11,19 +13,18 @@ function Manu({restId,restInfo,cards,restDetails,restaurantImageId}){
     // const [display ,setDisplay]=useState();
     const Info=cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
     const again=Info?.card?.card?.carousel?.dish?.info;
+    const theme=useSelector((state)=>state.theme.mode);
+    
 
     return(
      
         <div className="-ml-12"> 
-            <h1 className="flex text-gray-700 ml-100 mt-15 ">--M E N U--</h1>
-            <div>
-            <input type="search" value={required} onChange={(e)=>setRequired(e.target.value)} placeholder= " serach for dishes  " 
-            className="ml-2 mt-5 border w-230 h-12 rounded-2xl bg-gray-100"
+            <h1 className={ theme=== "dark"? "bg-black text-[17px] font-bold flex text-gray-700 ml-100 mt-15" : " text-[17px] font-bold flex text-gray-700 ml-100 mt-15"}>--M E N U--</h1>
+            <div >
+            <input type="search" value={required} onChange={(e)=>setRequired(e.target.value)} placeholder= "  serach for dishes  " 
+            className={ theme=== "dark"? "bg-gray-700 text-[16px] font-semibold ml-2 mt-5 border w-230 h-12 rounded-2xl" : " text-[16px] font-semibold ml-2 mt-5 border w-230 h-12 rounded-2xl bg-gray-100"}
             />
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRw7ioc38Ib77lcabaT4NGXYA-Wj2tRuhUfOzk6K1_o2F6QFq2x"
-            
-            className="w-16 ml-215 -mt-14 rounded-full bg-gray-100"
-            />
+             <FaMagnifyingGlass className="ml-214 -mt-7"/>       
             </div>
 
             <hr className="mt-20 w-235 text-2xl text-gray-400 font-extrabold"></hr>
@@ -119,10 +120,10 @@ function Manu({restId,restInfo,cards,restDetails,restaurantImageId}){
                           )
                         }
                         {
-                            <p className="ml-188 mt-7 text-gray-600 font-[10px] ">Customiable</p>
+                            <p className={ theme=== "dark"? " text-[17px] flex ml-188 mt-7 text-gray-600 font-[10px]" : " text-[17px]  flex  ml-188 mt-7 text-gray-600 font-[10px]"}>Customiable</p>
                         }
                         
-                        {name &&( <p className="-mt-40 ml-6 font-bold text-gray-700">{name}</p>)
+                        {name &&( <p className="-mt-40 ml-4 font-bold text-[19px] text-gray-600">{name}</p>)
                            
                         }
                         <div className="flex">
@@ -148,7 +149,7 @@ function Manu({restId,restInfo,cards,restDetails,restaurantImageId}){
                       
 
                         {
-                          <p className=" line-clamp-2  w-155 text-sm text-gray-700 mt-3  ml-5 font-semibold ">{description?.trim() ? description:"No description avialable"}</p> 
+                          <p className=" line-clamp-2  w-155 text-sm text-gray-600 text-[15px] mt-3  ml-5 font-semibold ">{description?.trim() ? description:"No description avialable"}</p> 
 
                             
                         } <h2 className="ml-161 -mt-6 font-bold text-gray-700 ">more</h2>

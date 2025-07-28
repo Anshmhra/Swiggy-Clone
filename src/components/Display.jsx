@@ -6,7 +6,12 @@ import UseLoader from "../Hooks/UseLoader";
 import { lazy, Suspense } from "react";
 import { useSelector } from "react-redux";
 import { useMemo } from "react";
-function Display({get,query}){
+
+
+function Display(){
+
+  const get = useSelector((state) => state.get.data); 
+    const query = useSelector((state) => state.search.query); 
 
     const {addToCart}=useCart();
     const Load=UseLoader();

@@ -7,14 +7,20 @@ import Fetch from './components/Fetch'
 import { Outlet } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import {useSelector} from "react-redux";
+import UseLoader from './Hooks/UseLoader.jsx';
+import { Suspense } from 'react'
 
 
-function App({setQuery,query}) {
-      const theme=useSelector((state)=>state.theme.mode);
+
+function App() {
+
+      
 
   return (
-    <div className={theme === "dark" ? "bg-gray-950 text-white min-h-screen" : "bg-white text-black min-h-screen"}>
-      <Navbar setQuery={setQuery} query={query}/>
+    <div>
+      <Suspense fallback={<UseLoader />}>
+                <Navbar/>
+                </Suspense>
       
         <Outlet  />
     

@@ -4,9 +4,11 @@ import Navbar from "./Navbar";
 import Token from "./Token";
 import Footer from "./Footer"
 import { Outlet } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setGet } from "../Feature/getSlice.jsx";
 
-
-function Fetch({setget,}){
+function Fetch(){
+    const dispatch = useDispatch();
 
 
   useEffect(()=>{
@@ -18,7 +20,7 @@ function Fetch({setget,}){
     const longitude=75.6914986;
       fetch(` https://www.swiggy.com/dapi/restaurants/list/v5?lat=${latitude}&lng=${longitude}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`)
     .then((response)=> response.json())
-    .then((data)=> {{
+    .then((data)=> {
 
 
       const cards = data?.data?.cards || [];
@@ -31,18 +33,18 @@ function Fetch({setget,}){
           restaurantCard?.card?.card?.gridElements?.infoWithStyle?.restaurants;
 
           if(Restaurant){
-              setget(Restaurant);
+              dispatch(setGet(Restaurant));
           }else{
              console.warn("⚠️ Restaurants not found in response", data)
           }
 
        
        console.log(data);
-     }})
+     })
     .catch((error)=> console.log(error));
 
    
-  },[])
+  },[dispatch])
 
  return(
     <div className="mt-0 h-3 p-4  ">

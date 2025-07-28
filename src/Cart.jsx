@@ -1,6 +1,7 @@
 import { useCart } from "./context/CartContext";
 import { useState } from "react";
 import Manu from "./components/Manu";
+import { useSelector } from "react-redux";
 
 function Cart(){
     const {CartItems,remove,additionInItem,decreasInItem}=useCart();
@@ -9,11 +10,12 @@ function Cart(){
       return acc+(curr.item.price * curr.quantity)/100;
     },0)
 
+    const theme=useSelector((state)=>state.theme.mode);
 
 
     return (
       
-    <div className="mt-30 max-w-4xl  ">
+    <div className="  mt-30 max-w-4xl">
       { CartItems.length === 0 ? (
         <div>
           <img
@@ -37,7 +39,7 @@ function Cart(){
            <p className="text-amber-50 font-bold">Oops! Something wrong</p></div>
         </div>
       ) : (
-        <div className="shadow-2xl w-120 ml-200 -mt-12 rounded-2xl p-2">
+        <div className={theme=== "dark"? "bg-gray-900   shadow-2xl w-120 ml-200 -mt-12 rounded-2xl p-2   " : " shadow-2xl w-120 ml-200 -mt-12 rounded-2xl p-2"}>
          {
           CartItems.length > 0 && CartItems[0]?.restaurantImageId && (
             <div>
@@ -118,7 +120,9 @@ function Cart(){
         <div className=" p-3 w-40 rounded-2xl shadow bg-emerald-500 text-white font-semibold hover:cursor-pointer mt-3 ml-70">
         <button className="hover:cursor-pointer ml-1">Click To Proceed</button>
         </div>
+        
         </div>
+       
       )}
     </div>
   );

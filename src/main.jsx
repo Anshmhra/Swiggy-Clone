@@ -10,7 +10,6 @@ import {createBrowserRouter,RouterProvider,} from "react-router-dom";
 import Display from './components/Display.jsx';
 import Token from './components/Token.jsx';
 import Fetch from './components/Fetch.jsx'
-import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx'
 // import Offer from './Offers.jsx'
 // import Cart from './Cart.jsx'
@@ -19,12 +18,13 @@ import { CartProvider } from './context/CartContext.jsx'
 import UseLoader from './Hooks/UseLoader.jsx';
 import { Provider } from 'react-redux';
 import leon from './Redux/Tool.js';
+import { useSelector } from 'react-redux';
 
 
 
 
 function Main(){
-   
+       const theme=useSelector((state)=>state.theme.mode);
   const SwiggyCorporate=lazy(()=>import("./components/SwiggyCorporate"));
    
   const Offer=lazy(()=>import("./Offers.jsx"));
@@ -35,30 +35,31 @@ function Main(){
  
     const App=lazy(()=>import("./App.jsx"));
   const Error=lazy(()=>import("./components/Error.jsx"));
+  const Navbar=lazy(()=>import("./components/Navbar.jsx"));
   
     // const Fetch=lazy(()=>import("./components/Fetch.jsx"));
 
 
 
+
   
   
 
 
 
- const [get,setget]=useState([]);
-    const [query,setQuery]=useState([]);
+
      
   const router=createBrowserRouter([
   {
     path:"/",
-    element: <Suspense><App setQuery={setQuery} query={query}/></Suspense>,
+    element: <Suspense><App /></Suspense>,
     children:[
       {
         path:"/",
         element:(
           <>
          
-          <Display get={get}query={query}/>
+          <Display />
           </>
         )
       },
@@ -100,14 +101,14 @@ function Main(){
 
 
   return      (
-    <>
-    <Fetch setget={setget}/>
+    <div  className={theme === "dark" ? "bg-gray-950 text-white min-h-screen" : "bg-white text-black min-h-screen"}>
+    <Fetch />
     
-        {/* <Navbar setQuery={setQuery}/> */}
+        
         <CartProvider> 
-          <Provider store={leon}>
+          
             <RouterProvider router={router}/>
-          </Provider>
+         
         </CartProvider>
    
  
@@ -119,7 +120,7 @@ function Main(){
 
  
 
-  </>
+  </div>
   
 )
 }
@@ -129,7 +130,8 @@ export default Main;
 
 
 createRoot(document.getElementById('root')).render(
- 
+ <Provider store={leon}>
     <Main/>
+    </Provider>
  
 )

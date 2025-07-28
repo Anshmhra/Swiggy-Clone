@@ -9,12 +9,12 @@ function Token(){
     
     return (
         <div className="-ml-20">
-            <h1 className="ml-30 mt-15 font-bold text-2xl ">Restaurents With online food delivery in {location}</h1>
-            <div className="ml-186  flex justify-end items-center mt-2 mr-4">
+            <h1 className={ theme=== "dark"? "bg-black text-gray-500 ml-30 mt-15 font-bold text-2xl" : " text-black ml-30 mt-15 font-bold text-2xl"} >Restaurents With online food delivery in {location}</h1>
+            <div className="ml-180   items-center -mt-7 mr-4 ">
             <button onClick={()=>dispatch(ToggleTheme())}
-                className={theme=== "dark"? "bg-black text-white" : "bg-white text-black" }
+                className={theme=== "dark"? "bg-gray-800 text-white p-2 rounded-2xl" : "bg-gray-800 text-white p-2 rounded-2xl " }
                 >
-                    Toggle to {theme ===" light"? "dark" : "light"}mode
+                    {theme ===" light"? "dark" : "light"} mode
 
             </button>
             </div>
@@ -37,4 +37,4 @@ function Token(){
     )
 }
 export default Token;
-// p-2 w-25 rounded-3xl shadow-2xl hover:scale-102 hover:cursor-pointer
+// p-2 w-25 rounded-3xl shadow-2xl hover:scale-102 hover:cursor-pointer -{ 

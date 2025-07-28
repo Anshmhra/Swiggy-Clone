@@ -1,4 +1,9 @@
+import { useSelector } from "react-redux";
+import { FaChevronDown } from "react-icons/fa";
 function Footer(){
+
+
+   const theme=useSelector((state)=>state.theme.mode);
     return(
         <div className="mt-25 " >
             <img src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/portal/m/seo/App_download_banner.png"
@@ -6,7 +11,7 @@ function Footer(){
             
             />
 
-            <h1 className="mt-8 ml-32 font-bold text-2xl">Cities with food delivery</h1>
+            <h1 className={theme=== "dark"? " text-gray-700 p-2 rounded-2xl mt-8 ml-31 font-bold text-[25px]" : " text-gray-700 p-2 rounded-2xl mt-8 ml-31 font-bold text-[25px] " }>Cities with food delivery</h1>
             <div className="flex flex-wrap gap-10 ml-32 mt-5">
                 <p className="border w-45 justify-center align-middle rounded-2xl p-4 hover:cursor-pointer hover:scale-92 duration-100 text-gray-700 hover:shadow-2xl font-bold">Order food online in Bangalore</p>
                 <p className="border w-45 justify-center align-middle rounded-2xl p-4 hover:cursor-pointer hover:scale-92 duration-100 text-gray-700 hover:shadow-2xl font-bold">Order food online in Hydrabad</p>
@@ -19,15 +24,13 @@ function Footer(){
                 <p className="border w-45 justify-center align-middle rounded-2xl p-4 hover:cursor-pointer hover:scale-92 duration-100 text-gray-700 hover:shadow-2xl font-bold">Order food online in Chandigarh </p>
                 <p className="border w-45 justify-center align-middle rounded-2xl p-4 hover:cursor-pointer hover:scale-92 duration-100 text-gray-700 hover:shadow-2xl font-bold">Order food online in Jaipur</p>
                 <div>
-                <p className="border w-45 justify-center align-middle rounded-2xl p-4 hover:cursor-pointer hover:scale-92 duration-100 text-amber-700 hover:shadow-2xl font-bold">Show more</p>
-                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT08USDXzXIVJQl7em2LsbtdK1vdH_EiSvAZu2yJNzBrhdFfFCK8o_z8lJ3qqWhrSNJy5U&usqp=CAU"
-                 className="w-4 h-4 rotate-180 bg-gray-300 rounded-2xl ml-34 -mt-8"
-                 />
+                <p className="border w-45 justify-center align-middle rounded-2xl p-4 hover:cursor-pointer hover:scale-92 duration-100 text-gray-700 hover:shadow-2xl font-bold  hover:text-amber-700">Show more</p>
+                 <FaChevronDown className={theme=== "dark"? "hover:text-amber-700 ml-30 -mt-8  " : " hover:text-amber-700 -ml-13 mt-5" }/>
                  
                  </div>
 
             </div> 
-             <h1 className="mt-8 ml-32 font-bold text-2xl">Cities with Grocery delivery</h1>
+             <h1 className={theme=== "dark"? " text-gray-700 p-2 rounded-2xl mt-8 ml-31 font-bold text-[25px]" : " text-gray-700 p-2 rounded-2xl mt-8 ml-31 font-bold text-[25px] " }>Cities with Grocery delivery</h1>
             <div className="flex flex-wrap gap-10 ml-32 mt-5">
                 <p className="border w-45 justify-center align-middle rounded-2xl p-4 hover:cursor-pointer hover:scale-92 duration-100 text-gray-700 hover:shadow-2xl font-bold">Order grocery online in Bangalore</p>
                 <p className="border w-45 justify-center align-middle rounded-2xl p-4 hover:cursor-pointer hover:scale-92 duration-100 text-gray-700 hover:shadow-2xl font-bold">Order grocery online in Hydrabad</p>
@@ -39,11 +42,10 @@ function Footer(){
                 <p className="border w-45 justify-center align-middle rounded-2xl p-4 hover:cursor-pointer hover:scale-92 duration-100 text-gray-700 hover:shadow-2xl font-bold">Order grocery online in Ahmedabad</p>
                 <p className="border w-45 justify-center align-middle rounded-2xl p-4 hover:cursor-pointer hover:scale-92 duration-100 text-gray-700 hover:shadow-2xl font-bold">Order grocery online in Chandigarh </p>
                 <p className="border w-45 justify-center align-middle rounded-2xl p-4 hover:cursor-pointer hover:scale-92 duration-100 text-gray-700 hover:shadow-2xl font-bold">Order grocery online in Jaipur</p>
-                <div>
-                <p className="border w-45 justify-center align-middle rounded-2xl p-4 hover:cursor-pointer hover:scale-92 duration-100 text-amber-700 hover:shadow-2xl font-bold">Show more</p>
-                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT08USDXzXIVJQl7em2LsbtdK1vdH_EiSvAZu2yJNzBrhdFfFCK8o_z8lJ3qqWhrSNJy5U&usqp=CAU"
-                 className="w-4 h-4 rotate-180 bg-gray-300 rounded-2xl ml-34 -mt-8"
-                 /></div>
+                <div className="flex hover:text-amber-700">
+                <p className="border w-45 justify-center align-middle rounded-2xl p-4 hover:cursor-pointer hover:scale-92 duration-100 text-gray-700 hover:shadow-2xl font-bold hover:text-amber-700">Show more</p>
+                <FaChevronDown className={theme=== "dark"? "hover:text-amber-700  -ml-13 mt-5  " : " hover:text-amber-700 -ml-13 mt-5" }/>
+                 </div>
 
 
                  <div className="mt-30 bg-gray-200 w-400 h-170 -ml-92">

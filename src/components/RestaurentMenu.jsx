@@ -3,6 +3,7 @@ import { useState ,useEffect} from "react";
 import Manu from "./Manu";
 import UseRestaurentMenu from "../Hooks/UseRestaurentMenu";
 import useLocation from "../Hooks/UseLoaction";
+import { useSelector } from "react-redux";
 
 function RestaurantMenu(){
 
@@ -12,6 +13,7 @@ function RestaurantMenu(){
   const restInfo=UseRestaurentMenu(restId);
   const location = useLocation();
     const restaurantImageId = location.state?.restaurantImage || "";
+    const theme=useSelector((state)=>state.theme.mode);
 
 
      const cards = restInfo?.data?.cards;
@@ -27,16 +29,16 @@ function RestaurantMenu(){
     return (
       
         <div className=" ml-58 mt-10">
-            <h1 className="text-3xl font-bold mt-10">{restDetails?.name}</h1>
+            <h1 className={ theme=== "dark"? "bg-black text-gray-500  text-3xl font-bold mt-10 " : " text-black  text-3xl font-bold mt-10 "}>{restDetails?.name}</h1>
             
-           <div className="flex gap-5 font-bold mt-7 ">
+           <div className={ theme=== "dark"? "bg-black  text-[18px] text-gray-500    flex gap-5 font-bold mt-7" : " text-black  text-[18px]  flex gap-5 font-bold mt-7"}>
            <h3 className="text-amber-600">{tabs?.[0]?.title }</h3>
           
            <h3>{tabs?.[1]?.title}</h3>
            </div>
            <hr className="w-220 h-5 -ml-3"></hr>
 
-           <div className=" border-1 border-b-gray-600  border-t-gray-600   border-x-gray-600 mt-3 w-220 h-38 rounded-2xl shadow-2xl ">
+           <div className={ theme=== "dark"? "bg-black  text-[15px] text-gray-500  gap-5 font-bold mt-7 border-1 border-b-gray-600  border-t-gray-600   border-x-gray-600  w-220 h-38 rounded-2xl shadow-2xl" : " text-black  text-[15px] gap-5 font-bold mt-7 border-1 border-b-gray-600  border-t-gray-600   border-x-gray-600  w-220 h-38 rounded-2xl shadow-2xl"}>
             <div className="flex gap-1 font-semibold ml-3 mt-3">
             <p>⭐{restDetails?.avgRating} - </p>
             <p>{restDetails?.totalRatingsString}</p>
@@ -46,7 +48,7 @@ function RestaurantMenu(){
              
            <p className="flex  gap-3 ml-4 mt-1 text-amber-700 font-semibold underline ">{restDetails?.cuisines.join(", ")}</p>
               
-              <div className="flex gap-5 ml-7 mt-3 font-bold">
+              <div className="flex gap-5 ml-4 mt-3 font-bold">
                 <p>Outlet</p>
                 <p className="text-gray-600 font-normal"> {restDetails?.areaName}</p>
               </div>
@@ -56,9 +58,9 @@ function RestaurantMenu(){
               </div>
 
            </div>
-           <p className="text-2xl font-bold mt-6">Deals for you</p>
+           <p className={ theme=== "dark"? "bg-black text-gray-500 text-[24px] font-bold mt-6" : " text-black text-[24px] font-bold mt-6"}>Deals for you</p>
 
-           <div className=" flex gap-12 mt-5 mr-57 -ml-10 flex-shrink-0  whitespace-nowrap overflow-x-auto scrollbar-hide   ">
+           <div className={ theme=== "dark"? "bg-black text-gray-500 text-[14px] font-bold mt-6 flex gap-12 mr-57 -ml-3 flex-shrink-0  whitespace-nowrap overflow-x-auto scrollbar-hide  " : " text-black text-[14px] font-bold  flex gap-12 mt-5 mr-57 -ml-3 flex-shrink-0  whitespace-nowrap overflow-x-auto scrollbar-hide  "}>
 
             {
               offer?.[0]?.info &&(
@@ -69,8 +71,8 @@ function RestaurantMenu(){
             className="w-12 "
             />
             <div className="-mt-12">
-           <p className="font-extrabold ml-18">{offer?.[0]?.info?.header}</p>   
-           <p className="text-gray-700 font-bold ml-18">{offer?.[0]?.info?.description}</p>
+           <p className="font-extrabold ml-12">{offer?.[0]?.info?.header}</p>   
+           <p className="text-gray-700 font-bold ml-12">{offer?.[0]?.info?.description}</p>
            </div>
           </div>
               )
@@ -155,5 +157,5 @@ function RestaurantMenu(){
     )
 }
 export default RestaurantMenu;
- 
+//  text-3xl font-bold mt-10
  
