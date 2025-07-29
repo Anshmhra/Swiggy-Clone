@@ -118,7 +118,7 @@ function Cart(){
         
         <p className="text-right mt-4 font-bold">Total amount: ₹{TotalAmount.toFixed(2)}</p>
         <div className=" p-3 w-40 rounded-2xl shadow bg-emerald-500 text-white font-semibold hover:cursor-pointer mt-3 ml-70">
-        <button className="hover:cursor-pointer ml-1">Click To Proceed</button>
+        <button className="hover:cursor-pointer ml-1" >Click To Proceed</button>
         </div>
         
         </div>

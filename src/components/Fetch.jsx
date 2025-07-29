@@ -12,13 +12,10 @@ function Fetch(){
 
 
   useEffect(()=>{
-    // navigator.geolocation.getCurrentPosition((position)=>{
+    navigator.geolocation.getCurrentPosition((position)=>{
       
-    //   const {latitude,longitude}=position.coords;
-    //   console.log("📍 Your Coordinates:", latitude, longitude);
-    const latitude=31.8443385;
-    const longitude=75.6914986;
-      fetch(` https://www.swiggy.com/dapi/restaurants/list/v5?lat=${latitude}&lng=${longitude}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`)
+      const {latitude,longitude}=position.coords;
+       fetch(` https://www.swiggy.com/dapi/restaurants/list/v5?lat=${latitude}&lng=${longitude}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`)
     .then((response)=> response.json())
     .then((data)=> {
 
@@ -42,6 +39,10 @@ function Fetch(){
        console.log(data);
      })
     .catch((error)=> console.log(error));
+      })
+    // const latitude=31.8443385;
+    // const longitude=75.6914986;
+     
 
    
   },[dispatch])
