@@ -7,7 +7,7 @@ export function CartProvider({children}){
 
    const [CartItems,setCartItems]=useState([]);
 
-  //  const [removeItem,setRemoveItems]=useState([]);
+  
    
 
 
@@ -28,7 +28,7 @@ export function CartProvider({children}){
    }
   
 function decreasInItem(itemId){
-  // const decearse=CartItems.find(find=>find.item.id!==itemId);
+  
   setCartItems((prevItems)=>
   prevItems.map((obk)=>obk.item.id==itemId
   ? {...obk,quantity: obk.quantity-1}
@@ -66,4 +66,3 @@ function additionInItem(itemId){
 export function useCart(){
   return useContext(CartContext);
 }
-  //  setCartItems(prev=>[...prev,{item,restaurantImageId ,restaurantName,locality}]);
